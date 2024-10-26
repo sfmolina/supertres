@@ -1,0 +1,42 @@
+# Ignorar archivos de compilación de Rust
+/target/
+/**/*.rs.bk
+
+# Archivos generados por el compilador
+*.rlib
+*.lock
+Cargo.lock
+
+# Archivos de dependencias
+/.cargo/
+
+# Archivos de herramientas de compilación
+/.idea/
+/.vscode/
+/*.toml.bk
+
+# Ignorar binarios compilados
+*.exe
+*.out
+*.a
+*.o
+*.so
+*.dylib
+*.dll
+
+# Archivos de caché de Yew (Trunk u otras herramientas)
+dist/
+build/
+pkg/
+target/
+
+# Archivos de configuración locales
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# Archivos específicos del sistema operativo
+.DS_Store
+Thumbs.db
