@@ -5,13 +5,4 @@ edition = "2021"
 
 [dependencies]
 console_error_panic_hook = "0.1.7"
-tokio = "1.40.0"
-wasm-bindgen = "0.2.95"
-web-sys = "0.3.72"
 yew = { version = "0.21.0", features = ["csr"] }
-yew-router = "0.18.0"
-
-[build]
-target = "web"
-release = true
-public-url = "/supertres/"

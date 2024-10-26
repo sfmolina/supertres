@@ -7,9 +7,9 @@
 
 
 use yew::prelude::*;
-use yew_router::prelude::*;
-use crate::{components::nav_bar::NavbarComponent,
-    router::{switch, Route}
+use crate::components::{
+    super_tres::SuperTresComponent,
+    nav_bar::NavbarComponent
 };
 
 
@@ -19,11 +19,9 @@ pub fn app() -> Html {
 
 
     html! {
-        <HashRouter>
+        <main>
             <NavbarComponent />
-            <main>
-                <Switch<Route> render={switch} />
-            </main>
-        </HashRouter>
+            <SuperTresComponent />
+        </main>
     }
 }
