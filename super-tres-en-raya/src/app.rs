@@ -1,7 +1,7 @@
 //-------------------------------------------------------------------//
 //  AUTHOR:    @sfmolina                                            //
-//  Version:   v1                                                  //
-//  Modified:  26oc24                                             //
+//  Version:   v2                                                  //
+//  Modified:  31dec24                                            //
 //---------------------------------------------------------------//
 
 
@@ -19,9 +19,9 @@ pub fn app() -> Html {
 
 
     html! {
-        <main>
+        <>
             <NavbarComponent />
             <SuperTresComponent />
-        </main>
+        </>
     }
 }

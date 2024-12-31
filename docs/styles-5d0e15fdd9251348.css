@@ -1,0 +1,114 @@
+.nav-style .navbar {
+  background-color: transparent !important;
+}
+.nav-style .navbar-brand .navbar-item {
+  padding: px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, border-radius 0.3s ease;
+}
+.nav-style .navbar-brand .navbar-item:hover {
+  background-color: #feb048;
+}
+.nav-style .username {
+  font-size: 1.3rem;
+  color: white;
+  font-weight: bold;
+}
+@media (max-width: 991px) {
+  .nav-style .username {
+    font-size: 2.4rem;
+  }
+}
+
+.is-high {
+  background-color: #feb048 !important;
+}
+
+.game-section {
+  height: 100vh;
+  background: linear-gradient(75deg, hsl(273, 5%, 10%) 10%, hsl(283, 5%, 12%) 20%, hsl(342, 5%, 14%) 40%, hsl(9, 5%, 16%) 57%, hsl(17, 5%, 18%) 67%, hsl(34, 5%, 20%) 100%);
+}
+.game-section .back-fp {
+  background: linear-gradient(50deg, hsl(257, 38%, 30%), hsl(256, 36%, 42%), hsl(304, 40%, 43%)) !important;
+}
+.game-section .back-sp {
+  background: linear-gradient(50deg, #925078 15%, #c85856 35%, #ea7b5b 55%, #fcd97a 100%) !important;
+}
+@media (max-width: 991px) {
+  .game-section .board-container .game-board {
+    margin-top: 50px !important;
+  }
+}
+.game-section .board-container .game-board {
+  width: 800px;
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell {
+  padding: 5px;
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .won-cell {
+  width: 245px;
+  height: 245px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 2.2rem;
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .won-cell.first-player {
+  background: transparent;
+  color: hsl(256, 36%, 42%);
+  border: 5px solid hsl(256, 36%, 42%);
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .won-cell.second-player {
+  background: transparent;
+  color: #c85856;
+  border: 5px solid #c85856;
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .sub-grid {
+  padding: 6px;
+  border: 1px solid white;
+  border-radius: 7px;
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .sub-grid .sub-row {
+  margin: 0;
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .sub-grid .sub-row .sub-cell {
+  transition: ease-in-out 0.2s all !important;
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .sub-grid .sub-row .sub-cell .button {
+  transition: ease-in-out 0.2s all !important;
+  background: #f8f9fa;
+  margin: 1px;
+  color: white;
+  font-weight: bold;
+  width: 75px;
+  height: 75px;
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .sub-grid .sub-row .sub-cell .button.played {
+  cursor: not-allowed;
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .sub-grid .sub-row .sub-cell .btn-none.unplayed:not(:disabled):hover {
+  transition: ease-in-out 0.2s all !important;
+  background-color: #d3d4d5;
+  border-color: #d3d4d5;
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .sub-grid .sub-row .sub-cell .btn-fp {
+  transition: ease-in-out 0.2s all !important;
+  background: linear-gradient(50deg, hsl(257, 38%, 30%), hsl(256, 36%, 42%), hsl(304, 40%, 43%));
+  border: 3px solid hsl(256, 36%, 42%);
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .sub-grid .sub-row .sub-cell .btn-fp.unplayed:hover {
+  transition: ease-in-out 0.2s all !important;
+  background: transparent;
+  color: hsl(256, 36%, 42%);
+  border: 3px solid hsl(256, 36%, 42%);
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .sub-grid .sub-row .sub-cell .btn-sp {
+  transition: ease-in-out 0.2s all !important;
+  background: linear-gradient(50deg, #925078 15%, #c85856 35%, #ea7b5b 55%, #fcd97a 100%);
+  border: 3px solid #c85856;
+}
+.game-section .board-container .game-board .gb-mid .super-grid .super-row .super-cell .sub-grid .sub-row .sub-cell .btn-sp.unplayed:hover {
+  transition: ease-in-out 0.2s all !important;
+  background: transparent;
+  color: #c85856;
+  border: 3px solid #c85856;
+}

@@ -1,7 +1,7 @@
 //-------------------------------------------------------------------//
 //  AUTHOR:    @sfmolina                                            //
-//  Version:   v1                                                  //
-//  Modified:  26oc24                                             //
+//  Version:   v2                                                  //
+//  Modified:  31dec24                                            //
 //---------------------------------------------------------------//
 
 
@@ -14,15 +14,15 @@ use yew::prelude::*;
 pub fn navbar() -> Html {
 
     html! {
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="https://sfmolina.github.io/">
-                    {"@sfmolina"}
-                </a>
-            </div>
-        </nav>
-
+        <div class="nav-style">
+            <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a class="navbar-item username" href="https://sfmolina.github.io/">
+                        {"@sfmolina"}
+                    </a>
+                </div>
+            </nav>
+        </div>
     }
 
 }

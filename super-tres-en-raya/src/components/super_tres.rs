@@ -1,7 +1,7 @@
 //-------------------------------------------------------------------//
 //  AUTHOR:    @sfmolina                                            //
-//  Version:   v1                                                  //
-//  Modified:  26oc24                                             //
+//  Version:   v2                                                  //
+//  Modified:  31dec24                                            //
 //---------------------------------------------------------------//
 // DESCRIPCIÓN:                                                
 // Componente de un juego de super tres en raya.
@@ -459,33 +459,52 @@ impl Component for SuperTresComponent {
         };
 
         html! {
-            <div class={classes!("game-container", winner_class)}>
+            <div class={classes!("section", "game-section", winner_class)}>
                 
+                <div class={"container is-flex is-justify-content-center board-container"}>
 
-                <div class="board-wrapper">
-                    <div class="row">
-                    </div>
-                    <div class="row">
-                    </div>
-                    <div class={"super-board"}>
-                        <div class="grid-3x3">
+                    <div class={classes!(
+                        "box", 
+                        "game-board",
+                        {
+                            if let Some(winner) = self.winner {
+                                match winner {
+                                    Player::First => "back-fp",
+                                    Player::Second => "back-sp",
+                                }
+                            } else {
+                                ""
+                            }
+                        }
+                    )}>
+
+                        // Botón de siguiente turno
+                        <div class="block gb-up">
                             <button 
-                                class={classes!("btn", "btn-primary", "end-turn-btn")}
+                                class={classes!("button", "is-high", "is-fullwidth")}
                                 onclick={ctx.link().callback(move |_| SuperTresMsg::Check)}
                                 disabled={!self.turn_played}
                             >
                                 {"NEXT"}
                             </button>
+                        </div>
+
+                        // Tablero de juego
+                        <div class="block gb-mid">
                             { self.render_super_board(ctx) }
+                        </div>
+
+                        // Anuncio de ganador
+                        <div class="block gb-bot">
                             {
                                 if let Some(winner) = self.winner {
                                     html! {
-                                        <div class="winner-announcement text-center">
-                                            <div class="alert alert-primary">
-                                                {format!("Player {} Wins!", 
+                                        <div class="title is-4 has-text-centered">
+                                            <div>
+                                                {format!("Player {} wins!", 
                                                     match winner {
-                                                        Player::First => "1 (X)",
-                                                        Player::Second => "2 (O)"
+                                                        Player::First => "X",
+                                                        Player::Second => "O"
                                                     }
                                                 )}
                                             </div>
@@ -496,6 +515,7 @@ impl Component for SuperTresComponent {
                                 }
                             }
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -507,16 +527,20 @@ impl SuperTresComponent {
 
     fn render_super_board(&self, ctx: &Context<Self>) -> Html {
         html! {
-            <div class="super-grid">
-                { for (0..3).map(|i| self.render_super_row(ctx, i)) }
+            <div class="container is-flex is-justify-content-center">
+            <div class="super-grid columns is-centered">
+                <div class="column is-narrow">
+                    { for (0..3).map(|i| self.render_super_row(ctx, i)) }
+                </div>
             </div>
+        </div>
         }
     }
 
 
     fn render_super_row(&self, ctx: &Context<Self>, i: u8) -> Html {
         html! {
-            <div class="super-row" key={i}>
+            <div class="columns super-row" key={i}>
                 { for (0..3).map(|j| self.render_super_cell(ctx, i, j)) }
             </div>
         }
@@ -529,8 +553,8 @@ impl SuperTresComponent {
         
         let cell_classes = classes!(
             "super-cell",
-            "p-2",
-            "border",
+            "column",
+            "is-narrow",
             if is_active { "active-board" } else { "inactive-board" }
         );
 
@@ -539,10 +563,10 @@ impl SuperTresComponent {
                 {
                     match self.tablero.get(position) {
                         Ok(Player::First) => html! {
-                            <div class="won-cell first-player">{"X"}</div>
+                            <div class="won-cell first-player is-flex is-justify-content-center is-align-items-center">{"X"}</div>
                         },
                         Ok(Player::Second) => html! {
-                            <div class="won-cell second-player">{"O"}</div>
+                            <div class="won-cell second-player is-flex is-justify-content-center is-align-items-center">{"O"}</div>
                         },
                         Err(tab) => self.render_sub_board(ctx, tab, position),
                     }
@@ -563,7 +587,7 @@ impl SuperTresComponent {
 
     fn render_sub_row(&self, ctx: &Context<Self>, tab: &TableroTres, pos1: Position, k: u8) -> Html {
         html! {
-            <div class="sub-row" key={k}>
+            <div class="columns is-gapless sub-row" key={k}>
                 { for (0..3).map(|l| self.render_sub_cell(ctx, tab, pos1, k, l)) }
             </div>
         }
@@ -577,30 +601,31 @@ impl SuperTresComponent {
         let is_played = self.played_total_positions.contains(&total_pos);
 
         let cell_classes = classes!(
-            "sub-cell",
-            "btn",
+            "button",
             match tab.get(pos2) {
-                Some(Player::First) => "btn-outline-primary",
-                Some(Player::Second) => "btn-outline-success",
-                None => "btn-light"
+                Some(Player::First) => "btn-fp",
+                Some(Player::Second) => "btn-sp",
+                None => "btn-none"
             },
-            if is_played { "played" } else { "" }
+            if is_played { "played" } else { "unplayed" }
         );
 
         html! {
-            <button
-                class={cell_classes}
-                disabled={is_disabled}
-                onclick={ctx.link().callback(move |_| SuperTresMsg::Mark(pos1, pos2))}
-            >
-                {
-                    match tab.get(pos2) {
-                        Some(Player::First) => "X",
-                        Some(Player::Second) => "O",
-                        None => " "
+            <div class="column is-narrow sub-cell">
+                <button
+                    class={cell_classes}
+                    disabled={is_disabled}
+                    onclick={ctx.link().callback(move |_| SuperTresMsg::Mark(pos1, pos2))}
+                >
+                    {
+                        match tab.get(pos2) {
+                            Some(Player::First) => "X",
+                            Some(Player::Second) => "O",
+                            None => " "
+                        }
                     }
-                }
-            </button>
+                </button>
+            </div>
         }
     }
 
