@@ -16,195 +16,180 @@ $second-player-gradient: linear-gradient(50deg,
 );
 $second-player-color: #c85856;
 
-.game-container {
 
-  background: linear-gradient(75deg, 
-    hsl(273, 5%, 10%) 10%,
-    hsl(283, 5%, 12%) 20%,
-    hsl(342, 5%, 14%) 40%,
-    hsl(9, 5%, 16%) 57%,
-    hsl(17, 5%, 18%) 67%,
-    hsl(34, 5%, 20%) 100%
-  );
+.nav-style {
+    .navbar {
+        background-color: transparent !important;
+        
+        
+    }
+    .navbar-brand {
+        .navbar-item {
+            padding: px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, border-radius 0.3s ease;
 
-  height: 100vh;
+            &:hover {
+                background-color: $highlighted-color;
+            }
+        }
+    }
 
-}
-
-.btn-primary {
-  background: $highlighted-color !important;
-  border-color: $highlighted-color !important;
-
-  &:hover {
-    background: adjust-color($highlighted-color, $lightness: -10%) !important;
-    border-color: adjust-color($highlighted-color, $lightness: -10%) !important;
-  }
-}
-
-.bg-primary {
-  background: linear-gradient(50deg,
-          #433762,
-          #5e4f87,
-          #904d8c
-        ) !important;
-}
-
-.btn-outline-primary {
-
-  color: $first-player-color !important;
-  border-color: $first-player-color !important;
-  border-width: 3px !important;
-
-  &:hover {
-    color: white !important;
-    background: $first-player-gradient !important;
-  }
-
-}
-
-.first-player {
-  color: $first-player-color !important;
-}
-
-.bg-first-player {
-  background: $first-player-gradient !important;
-}
-
-.btn-outline-success {
-
-  color: $second-player-color !important;
-  border-color: $second-player-color !important;
-  border-width: 3px !important;
-
-  &:hover {
-    color: white !important;
-    background: $second-player-gradient !important;
-  }
-
-}
-
-.second-player {
-  color: $second-player-color !important;
-}
-
-.bg-second-player {
-  background: $second-player-gradient !important;
-}
-
-.board-wrapper {
-  padding-top: 50px;
-}
-
-.end-turn-btn {
-  width: 100%;
-}
-
-
-.super-board {
-  display: flex;
-  justify-content: center;
-}
-
-.grid-3x3 {
-  display: grid;
-  gap: 10px;
-  padding: 10px;
-  width: 40%;
-
-  @media (max-width: 1200px) {
-    width: 60%;
-  }
-
-  @media (max-width: 992px) {
-    width: 70%;
-  }
-
-  @media (max-width: 768px) {
-    width: 80%;
-  }
-
-  @media (max-width: 576px) {
-    width: 90%;
-  }
-}
-
-.super-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.super-row {
-  display: contents;
-}
-
-.super-cell {
-  aspect-ratio: 1;
-  border: 2px solid #dee2e6;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.super-cell.active-board {
-  background: rgba(0,123,255,0.05);
-  border-color: #007bff;
-}
-
-.super-cell.inactive-board {
-  opacity: 0.7;
-}
-
-.sub-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  height: 100%;
-}
-
-.sub-row {
-  display: contents;
-}
-
-.sub-cell {
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 0;
-  transition: all 0.2s ease;
-}
-
-.won-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.played {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.navbar {
-
-  .navbar-brand {
-    font-weight: bold;
-    padding: 5px 19px;
-    margin-right: 3px;
-    transition: color 0.3s ease;
-    color: white;
+    .username {
+        font-size: 1.3rem;
+        color: white;
+        font-weight: bold;
+    }
+    
     @media (max-width: 991px) {
-        font-size: 1.8rem;
+        .username {
+            font-size: 2.4rem;
+        }
+    }
+}
+
+
+.is-high {
+    background-color: $highlighted-color !important;
+}
+
+
+.game-section {
+
+    height: 100vh;
+
+    background: linear-gradient(75deg, 
+        hsl(273, 5%, 10%) 10%,
+        hsl(283, 5%, 12%) 20%,
+        hsl(342, 5%, 14%) 40%,
+        hsl(9, 5%, 16%) 57%,
+        hsl(17, 5%, 18%) 67%,
+        hsl(34, 5%, 20%) 100%
+    );
+
+    .back-fp {
+        background: $first-player-gradient !important;
     }
 
-    &:hover, &.active, &:active, &:focus {
-        color: $highlighted-color;
+    .back-sp {
+        background: $second-player-gradient !important;
     }
-  }
 
+    .board-container {
+
+        @media (max-width: 991px) {
+            .game-board {
+                margin-top: 50px !important;
+            }
+        }
+
+        .game-board {
+
+            width: 800px;
+
+            .gb-mid {
+
+                .super-grid {
+
+                    .super-row {
+
+                        .super-cell {
+
+                            padding: 5px;
+
+                            .won-cell {
+                                width: 245px;
+                                height: 245px;
+                                border-radius: 10px;
+                                font-weight: bold;
+                                font-size: 2.2rem;
+                            }
+
+                            .won-cell.first-player {
+                                background: transparent;
+                                color: $first-player-color;
+                                border: 5px solid $first-player-color;
+                            }
+
+                            .won-cell.second-player {
+                                background: transparent;
+                                color: $second-player-color;
+                                border: 5px solid $second-player-color;
+                            }
+                            
+                            .sub-grid {
+                                padding: 6px;
+                                border: 1px solid white;
+                                border-radius: 7px;
+
+                                .sub-row {
+
+                                    margin: 0;
+
+                                    .sub-cell {
+
+                                        transition: ease-in-out 0.2s all !important;
+
+                                        .button {
+                                            transition: ease-in-out 0.2s all !important;
+                                            background: #f8f9fa;
+                                            margin: 1px;
+                                            color: white;
+                                            font-weight: bold;
+                                            width: 75px;
+                                            height: 75px;                                            
+                                        }
+
+                                        .button.played {
+                                            cursor: not-allowed;
+                                        }
+
+                                        .btn-none.unplayed {
+                                            &:not(:disabled) {
+                                                &:hover {
+                                                    transition: ease-in-out 0.2s all !important;
+                                                    background-color: #d3d4d5;
+                                                    border-color: #d3d4d5;
+                                                }
+                                            }
+                                        }
+
+                                        .btn-fp {
+                                            transition: ease-in-out 0.2s all !important;
+                                            background: $first-player-gradient;
+                                            border: 3px solid $first-player-color;
+                                        }
+
+                                        .btn-fp.unplayed {
+                                            &:hover {
+                                                transition: ease-in-out 0.2s all !important;
+                                                background: transparent;
+                                                color: $first-player-color;
+                                                border: 3px solid $first-player-color;
+                                            }
+                                        }
+
+                                        .btn-sp {
+                                            transition: ease-in-out 0.2s all !important;
+                                            background: $second-player-gradient;
+                                            border: 3px solid $second-player-color;
+                                        }
+
+                                        .btn-sp.unplayed {
+                                            &:hover {
+                                                transition: ease-in-out 0.2s all !important;
+                                                background: transparent;
+                                                color: $second-player-color;
+                                                border: 3px solid $second-player-color;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
